@@ -1,2 +1,2 @@
 # Restful_API_Slim
-API Slim php
+API_Slim_php

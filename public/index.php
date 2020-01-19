@@ -13,4 +13,20 @@ $app->get('/hello/{name}', function (Request $request, Response $response, array
     return $response;
 });
 
+$app->get('/id/{name}', function (Request $request, Response $response, array $args) {
+    $id = $args['name'];
+    $response->getBody()->write("Hello, $id");
+    return $response;
+});
+
+$app->post('/tast/name', function (Request $a1, Request $a2){
+$data=$a1->getParsedBody();
+$inputdata=[];
+$inputdata['name']=filter_var($data['name'], FILTER_SANITIZE_STRING);
+$inputdata['id']=filter_var($data['id'], FILTER_SANITIZE_STRING);
+$a2->getBody()->write('daer ' .$inputdata['name'].'your phone unmber is ' .$inputdata['phone']);
+
+});
+
+
 $app->run();

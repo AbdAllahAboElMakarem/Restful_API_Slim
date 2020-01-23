@@ -35,6 +35,8 @@ $app->get('/testargs/{Name}/{phone}', function ($request,$response, array $args)
     return $response;
 });
 
+
+
 $app->get('/jsontast/{FerstName}/{LastName}' ,function($request ,$response ,$args){
     $FerstName = $args['FerstName'];
     $LastName = $args['LastName'];
@@ -46,12 +48,25 @@ $out['LastName'] = $LastName;
 $response->getBody()->write(json_encode($out));
 });
 
+//put
+
 $app->put('/testput' ,function($request ,$response){
 
 $data=$request->getParsedBody();
 $username=$data['UserName'];
 $password=$data['Password'];
 $response->getBody()->write('$username your password is $password');
+
+});
+
+//Delete
+
+$app->delete('/testdelete' ,function($request ,$response){
+
+$data=$request->getParsedBody();
+$username=$data['UserName'];
+$password=$data['Password'];
+$response->getBody()->write('$username your password is $password with  Delete tast demo');
 
 });
 

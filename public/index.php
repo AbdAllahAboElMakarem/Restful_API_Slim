@@ -70,5 +70,16 @@ $response->getBody()->write('$username your password is $password with  Delete t
 
 });
 
+$app->map(['PUT' ,'GET'],'/multipleMrthodsTest/{id}',function($request ,$response){
+
+$id=$argc['id'];
+if ($request->isPut()){
+    $response->getBody()->write('This di=$di will be updated');
+}
+
+if ($request->isGet()){
+    $response->getBody()->write('This di=$di will be retrived');
+}
+});
 
 $app->run();

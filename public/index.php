@@ -46,5 +46,14 @@ $out['LastName'] = $LastName;
 $response->getBody()->write(json_encode($out));
 });
 
+$app->put('/testput' ,function($request ,$response){
+
+$data=$request->getParsedBody();
+$username=$data['UserName'];
+$password=$data['Password'];
+$response->getBody()->write('$username your password is $password');
+
+});
+
 
 $app->run();

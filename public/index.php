@@ -72,7 +72,7 @@ $response->getBody()->write('$username your password is $password with  Delete t
 
 $app->map(['PUT' ,'GET'],'/multipleMrthodsTest/{id}',function($request ,$response){
 
-$id=$argc['id'];
+$id=$args['id'];
 if ($request->isPut()){
     $response->getBody()->write('This di=$di will be updated');
 }
@@ -82,8 +82,8 @@ if ($request->isGet()){
 }
 });
 
-$app->get('/password[/{id}]' ,function($requ ,$resp ,$argc){
-$id=$argc['id'];
+$app->get('/password[/{id}]' ,function($requ ,$resp ,$args){
+$id=$args['id'];
 if (is_null(id)){
 $requ->getBody()->write('Ths id is null');
 }
@@ -94,10 +94,10 @@ $resp->getBody()->write('THS $id=id');
 });
 
 
-$app->get('/password[/{year}[/{month}]]' ,function($requ ,$resp ,$argc){
+$app->get('/password[/{year}[/{month}]]' ,function($requ ,$resp ,$args){
 
-$year=$argc['year'];
-$month=$argc['month'];
+$year=$args['year'];
+$month=$args['month'];
 
 
 if (is_null(year)){
@@ -129,5 +129,10 @@ $res->getBody()->write($out);
 }
 });
 
+$app->get('/regular/{id:[0-9]+}/{name:[a-z]=}',function($request ,$response ,$args){
+$id=$args['id'];
+$name=$args['name'];
+});
+$response->getBody()->write('this id=$id,the name is $name');
 
 $app->run();

@@ -132,7 +132,25 @@ $res->getBody()->write($out);
 $app->get('/regular/{id:[0-9]+}/{name:[a-z]=}',function($request ,$response ,$args){
 $id=$args['id'];
 $name=$args['name'];
-});
 $response->getBody()->write('this id=$id,the name is $name');
+});
 
+$app->group('/grouptest', function($request ,$response) use($app){
+$app->get('' ,function($request ,$response){
+$response->getBody()->write('GET EMPTY METHOD');
+});
+$app->put('' ,function($request ,$response){
+$response->getBody()->write('PUT EMPTY METHOD');
+});
+$app->get('/{id}' ,function($request ,$response ,$args){
+$id=$args['id'];
+$response->getBody()->write('GET WHIS id=$di');
+});
+$app->post('/postdata' ,function($request ,$response ,$args){
+$response->getBody()->write('post method');
+});
+
+
+
+});
 $app->run();

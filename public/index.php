@@ -149,8 +149,20 @@ $response->getBody()->write('GET WHIS id=$di');
 $app->post('/postdata' ,function($request ,$response ,$args){
 $response->getBody()->write('post method');
 });
-
-
-
 });
+
+$app->group('/API' ,function($req ,$res) use($app){
+
+$app->group('/V1' ,function($req ,$res) use($app){
+
+$app->get('/getuser' ,function($req ,$res){
+echo'getuser V1';
+});
+
+$app->pust('/adduser' ,function($req ,$res){
+echo'adduser V1';
+});
+});
+
+
 $app->run();
